@@ -1,0 +1,53 @@
+<div class="row justify-content-md-center">
+    <div class="col-md-10">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="/visitas">Visitas</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Nuevo Visitante</li>
+            </ol>
+        </nav>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title text-center">Nuevo Visitante</h5>
+                <hr>
+                <form (ngSubmit)="newVisitante()" novalidate autocomplete="off" [formGroup]="form">
+                    <div class="mb-3">
+                        <label class="form-label">Nombre</label>
+                        <input type="text" class="form-control" placeholder="Ingresa tu nombre" formControlName="nombre" [class.is-invalid]="isNombreValid">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Apellido Paterno</label>
+                        <input type="text" class="form-control" placeholder="Ingresa tu apellido paterno" formControlName="apellidoPaterno" [class.is-invalid]="isApellidoPValid">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Apellido Materno</label>
+                        <input type="text" class="form-control" placeholder="Ingresa tu apellido materno" formControlName="apellidoMaterno" [class.is-invalid]="isApellidoMValid">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Edad</label>
+                        <input type="number" class="form-control" placeholder="Ingresa tu edad" formControlName="edad" [class.is-invalid]="isEdadValid">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" placeholder="Ingresa tu correo electrónico" formControlName="email" [class.is-invalid]="isEmailValid">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Nombre de usuario</label>
+                        <input type="text" class="form-control" placeholder="Ingresa tu nombre de usuario" formControlName="username" [class.is-invalid]="isUsernameValid">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Teléfono</label>
+                        <input type="tel" class="form-control" placeholder="Ingresa tu número telefónico" formControlName="telefono" [class.is-invalid]="isTelefonoValid">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Dirección</label>
+                        <input type="text" class="form-control" placeholder="Ingresa tu dirección" formControlName="direccion" [class.is-invalid]="isDireccionValid">
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Registrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

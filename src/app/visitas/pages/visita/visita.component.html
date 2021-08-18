@@ -1,0 +1,51 @@
+<div class="row justify-content-md-center">
+    <div class="col-md-10">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="/visitas">Visitas</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Nueva Visita</li>
+            </ol>
+        </nav>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title text-center">Nueva visita</h5>
+                <hr>
+                <form (ngSubmit)="newVisit()" novalidate autocomplete="off" [formGroup]="form">
+                    <div class="mb-3">
+                        <label class="form-label">Visitante</label>
+                        <select class="form-select" formControlName="visitante">
+                            <option *ngFor="let visitante of visitantes" [ngValue]="visitante.id"> {{ visitante.username }} </option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Guía</label>
+                        <select class="form-select" formControlName="guia">
+                            <option *ngFor="let guia of guias" [ngValue]="guia.id"> {{ guia.nombre }} {{ guia.apellidoPaterno }} {{ guia.apellidoMaterno }} </option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Zona</label>
+                        <select class="form-select" formControlName="zona" (ngModelChange)="onZonaChange($event)">
+                            <option *ngFor="let zona of zonas" [ngValue]="zona.id"> {{ zona.nombre }} </option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Ruta</label>
+                        <select class="form-select" formControlName="ruta">
+                            <option *ngFor="let ruta of rutas" [ngValue]="ruta.id"> {{ ruta.nombre }} </option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Horario</label>
+                        <select class="form-select" formControlName="horario">
+                            <option *ngFor="let horario of horarios" [ngValue]="horario.id"> {{ horario.dia }} de {{ horario.horaInicio }} a {{ horario.horaTermino }} </option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Registrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

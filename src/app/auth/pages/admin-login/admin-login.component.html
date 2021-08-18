@@ -1,0 +1,22 @@
+<div class="row justify-content-md-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title text-center">Admin Login</h5>
+                <form autocomplete="off" (ngSubmit)="login()" [formGroup]="form" novalidate>
+                    <div class="mb-3">
+                        <label class="form-label">Nombre de usuario</label>
+                        <input type="text" class="form-control" placeholder="Ingresa tu nombre de usuario" formControlName="username" [class.is-invalid]="isUsernameValid">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" placeholder="Ingresa tu contraseña" formControlName="password" [class.is-invalid]="isPasswordValid">
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Entrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+<div class="container-fluid" *ngIf="visitas.length <= 0">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-info" role="alert">
+                <strong>Cargando información... </strong><i class="fas fa-spinner mx-3 fa-spin"></i>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid" *ngIf="visitas.length > 0">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="btn-toolbar" role="toolbar">
+                <div class="btn-group me-2" role="group">
+                    <a class="btn btn-success" routerLink="/visitas/nueva" role="button">Nueva visita <i class="fas fa-plus-square mx-2"></i></a>
+                    <!-- <button type="button" class="btn btn-success">Nueva visita <i class="fas fa-plus-square mx-2"></i></button> -->
+                </div>
+                <div class="btn-group" role="group">
+                    <a class="btn btn-primary" routerLink="/visitantes/nuevo" role="button">Nuevo visitante <i class="fas fa-user mx-2"></i></a>
+                    <!-- <button type="button" class="btn btn-primary">Nuevo visitante <i class="fas fa-user mx-2"></i></button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="table-dark">
+                        <tr>
+                            <td>#</td>
+                            <td>Zona</td>
+                            <td>Visitante</td>
+                            <td>Guía</td>
+                            <td>Ruta</td>
+                            <td>Horario</td>
+                            <td>Acciones</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let visita of visitas; let i = index;">
+                            <td> {{ i+1 }} </td>
+                            <td> {{ visita.zonaNavigation.nombre }} </td>
+                            <td> {{ visita.visitanteNavigation.nombre }} {{ visita.visitanteNavigation.apellidoPaterno }} {{ visita.visitanteNavigation.apellidoMaterno }} </td>
+                            <td> {{ visita.guiaNavigation.nombre }} {{ visita.guiaNavigation.apellidoPaterno}} {{ visita.guiaNavigation.apellidoMaterno }} </td>
+                            <td> {{ visita.rutaNavigation.nombre }} </td>
+                            <td> {{ visita.horarioNavigation.dia }} de: {{ visita.horarioNavigation.horaInicio }} a {{ visita.horarioNavigation.horaTermino }} </td>
+                            <td>
+                                <div class="btn-toolbar" role="toolbar">
+                                    <div class="btn-group me-2" role="group">
+                                        <button type="button" class="btn btn-danger" (click)="deleteVisita(i, visita.id)"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-info" (click)="visitaDetail(visita.id)"><i class="fas fa-info-circle text-white"></i></button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
